@@ -83,7 +83,7 @@
       doc.write(`
         <!DOCTYPE html>
         <html>
-        <head><title>If you're on this tab,then you're gay,Jaydon!</title></head>
+        <head><title>If you're on this tab, then you're gay, Jaydon!</title></head>
         <body style="margin:0;background:#000;">
           <iframe src="${url}" style="border:none;width:100vw;height:100vh;"></iframe>
         </body>
@@ -91,6 +91,13 @@
       `);
       doc.close();
     }
+
+    // Warn user before leaving the page
+    window.addEventListener('beforeunload', function (event) {
+      const message = "Leave site? Changes you made may not be saved to the about:blank and the launcher. Don't change anything else, like the page title.";
+      event.returnValue = message; // For most browsers
+      return message; // For some older browsers
+    });
   </script>
 
   <!-- particles.js library -->
